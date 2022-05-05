@@ -48,3 +48,21 @@ export function sift1(arr: boolean[]): void {
     index_square = 2 * i * (i + 3) + 3;
   }
 }
+
+export function sift(arr: boolean[]): void {
+  arr.fill(true);
+
+  let i = 0;
+  let index_square = 3;
+  let factor = 3;
+
+  while (index_square < arr.length) {
+    if (arr[i]) {
+      mark_sieve(arr, index_square, arr.length, factor);
+    }
+    ++i;
+    index_square += factor;
+    factor += 2;
+    index_square += factor;
+  }
+}
