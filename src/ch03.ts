@@ -1,4 +1,4 @@
-import assert from "assert";
+import { strict as assert } from "assert";
 
 export function mark_sieve(
   arr: boolean[],
@@ -90,3 +90,12 @@ for (let i = 1; i <= 107; i++) {
 const average = sum / max;
 
 console.log(average);
+
+function gcm(a: number, b: number): number {
+  if (a === b) return a;
+  if (b < a) return gcm(a - b, b);
+  return gcm(a, b - a);
+}
+
+assert.equal(gcm(196, 42), 14);
+assert.equal(gcm(42, 196), 14);
