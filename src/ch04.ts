@@ -106,7 +106,7 @@ function remainder(a: line_segment, b: line_segment): line_segment {
   assert(b != 0);
 
   if (a < b) return a;
-  let c: line_segment = largest_doubling(a, b);
+  let c = largest_doubling(a, b);
   a = a - c;
   while (c != b) {
     c = half(c);
@@ -119,7 +119,7 @@ function quotient(a: line_segment, b: line_segment): number {
   assert(b > 0);
 
   if (a < b) return 0;
-  let c: line_segment = largest_doubling(a, b);
+  let c = largest_doubling(a, b);
   let n = 1;
   a = a - c;
   while (c != b) {
@@ -141,7 +141,7 @@ function quotient_remainder(
   assert(b > 0);
 
   if (a < b) return [0, a];
-  let c: line_segment = largest_doubling(a, b);
+  let c = largest_doubling(a, b);
   let n: number = 1;
   a = a - c;
   while (c != b) {
