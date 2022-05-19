@@ -31,3 +31,23 @@ assert.equal(gcm1(42, 196), 14);
 assert.equal(gcm1(45, 6), 3);
 assert.equal(gcm1(3, 2), 1);
 assert.equal(gcm1(3, 1), 1);
+
+function segment_remainder(a: line_segment, b: line_segment): line_segment {
+  while (b < a) a = a - b;
+  return a;
+}
+
+function gcm(a: line_segment, b: line_segment): line_segment {
+  while (a != b) {
+    a = segment_remainder(a, b);
+    [a, b] = [b, a];
+  }
+
+  return a;
+}
+
+assert.equal(gcm(196, 42), 14);
+assert.equal(gcm(42, 196), 14);
+assert.equal(gcm(45, 6), 3);
+assert.equal(gcm(3, 2), 1);
+assert.equal(gcm(3, 1), 1);
