@@ -155,3 +155,23 @@ function quotient_remainder(
 
   return [n, a];
 }
+
+function remainder_fibonacci(a: line_segment, b: line_segment): line_segment {
+  assert(b > 0);
+
+  if (a < b) return a;
+
+  let c = b;
+  do {
+    [b, c] = [c, b + c];
+  } while (a >= c);
+
+  do {
+    if (a >= b) a = a - b;
+    [b, c] = [c - b, b];
+  } while (b < c);
+
+  return a;
+}
+
+assert.equal(remainder_fibonacci(45, 6), 3);
