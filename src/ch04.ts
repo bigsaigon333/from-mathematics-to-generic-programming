@@ -133,3 +133,25 @@ function quotient(a: line_segment, b: line_segment): number {
 
   return n;
 }
+
+function quotient_remainder(
+  a: line_segment,
+  b: line_segment
+): [number, line_segment] {
+  assert(b > 0);
+
+  if (a < b) return [0, a];
+  let c: line_segment = largest_doubling(a, b);
+  let n: number = 1;
+  a = a - c;
+  while (c != b) {
+    c = half(c);
+    n = n + n;
+    if (c <= a) {
+      a = a - c;
+      n = n + 1;
+    }
+  }
+
+  return [n, a];
+}
