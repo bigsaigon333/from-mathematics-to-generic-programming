@@ -1,5 +1,17 @@
 import { strict as assert } from "assert";
 
+function rect(n: number) {
+  return n * (n + 1);
+}
+
+assert.equal(rect(10), rect(9) + 10 * 2);
+
+function tri(n: number) {
+  return rect(n) / 2;
+}
+
+assert.equal(tri(10), tri(9) + 10);
+
 export function mark_sieve(
   arr: boolean[],
   first: number,
@@ -99,3 +111,5 @@ function gcm(a: number, b: number): number {
 
 assert.equal(gcm(196, 42), 14);
 assert.equal(gcm(42, 196), 14);
+assert.equal(gcm(3, 2), 1);
+assert.equal(gcm(3, 1), 1);
