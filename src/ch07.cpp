@@ -19,9 +19,22 @@ int mult_acc4(int r, int n, int a) {
   }
 }
 
+template <typename A, typename N>
+A multiply_accumulate(A r, N n, A a) {
+  while(true) {
+    if (odd(n)) {
+      r = r + a;
+      if (n == 1) return r;
+    }
+    n = half(n);
+    a = a + a;
+  }
+}
+
+\
 int multiply2(int n, int a) {
   if (n == 1) return a;
-  return mult_acc4(a, n-1, a);
+  return multiply_accumulate(a, n-1, a);
 }
 
 int main() {
